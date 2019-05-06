@@ -4,6 +4,7 @@ public class Ball
 	public static double MIN_DEG = 15;
 	public static double DIFF_BOUND = 0.5;
 	private static double TARGET_COEFF = 0.870245007352; // this should make the targets close to the values we inputted manually
+	private static double GC = 4.8625; // average acceleration c-moon creates
 	
 	double velocity;
 	double angle;
@@ -38,7 +39,15 @@ public class Ball
 	 */
 	double determineFinishLine()
 	{
-		double tDist = TARGET_COEFF * vMax * vMax / g; // it's cleaner and simpler if target distance is determined by a formula
+		double tDist = 0;
+		if (g == 9.81)
+		{
+			tDist = TARGET_COEFF * vMax * vMax / g; // it's cleaner and simpler if target distance is determined by a formula
+		}
+		else // if using c-moon
+		{
+			tDist = TARGET_COEFF * vMax * vMax / GC;
+		}
 		return tDist;
 	}
 	
