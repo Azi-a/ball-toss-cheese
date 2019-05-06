@@ -1,11 +1,16 @@
 public class Ball 
 {
+	public static double MAX_DEG = 75;
+	public static double MIN_DEG = 15;
+	public static double DIFF_BOUND = 0.5;
+	private static double TARGET_COEFF = 0.870245007352; // this should make the targets close to the values we inputted manually
+	
 	double velocity;
 	double angle;
-	double speed;
 	double g;
 	double target;
 	double dist;
+	double vMax;
 	
 	
 	
@@ -14,44 +19,27 @@ public class Ball
 	 * @param vMax
 	 * @param deltat 
 	 */
-	public Ball(double vMax,double deltaT, double grav)
+	public Ball(double vMaximum, double deltaT, double grav)
 	{
-		if (deltaT <= 1)
-			velocity = vMax;
+		vMax = vMaximum;
+		if (deltaT <= DIFF_BOUND)
+			velocity = vMaximum;
 		else
-			velocity = vmax / (deltaT);
-		angle = (Math.random() * 60) + 15;
+			velocity = vMaximum / (deltaT * 2); // gives a greater benefit to people who get closer to the target time
+		angle = (Math.random() * MAX_DEG - MIN_DEG) + MIN_DEG; // angles: random val from 15 to 75
 		g = grav;
 	}
 	
 	
 	/**
 	 *  
-	 * @param throwerName the codename of the thrower. 'pm'=Pickle Man|'ttn' = Turtonne|'cm' = C-moon|'wk' = Waffle King
+	 * 
 	 * @return
 	 */
-	double determineFinishLine(String throwerName)
+	double determineFinishLine()
 	{
-		if(throwerName.equalsIgnoreCase("pm"))
-		{
-			target = 135;
-		}
-		if (throwerName.equalsIgnoreCase("ttn"))
-		{
-			target = 400;
-		}
-		if (throwerName.equalsIgnoreCase("cm"))
-		{
-			target = 600;
-		}
-		
-		if (throwerName.equalsIgnoreCase("wk"))
-		{
-			target = 350;
-		}
-		return target;
-		
-		
+		double tDist = TARGET_COEFF * vMax * vMax / g; // it's cleaner and simpler if target distance is determined by a formula
+		return tDist;
 	}
 	
 	/**
@@ -77,17 +65,11 @@ public class Ball
 	 */
 	double getTimeBallInAir()
 	{
-		time = 2*velocity*Math.sin(Math.toRadians(angle))/g;
-		return time;
+		timeInAir = 2*velocity*Math.sin(Math.toRadians(angle))/g;
+		return timeInAir;
 	}
-	boolean clearTarget()
-	{
-		if (dist > target)
-		{
-			return true;
-		}
-		return false;
-	}
+	
+	
 	
 }
 
