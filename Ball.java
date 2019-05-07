@@ -3,7 +3,7 @@ public class Ball
 	public static double MAX_DEG = 75;
 	public static double MIN_DEG = 15;
 	public static double DIFF_BOUND = 0.5;
-	private static double TARGET_COEFF = 0.870245007352; // this should make the targets close to the values we inputted manually
+	private static double TARGET_COEFF = 0.8; // this should make the targets close to the values we inputted manually
 	private static double GC = 4.8625; // average acceleration c-moon creates
 	
 	double velocity;
