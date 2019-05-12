@@ -1,6 +1,6 @@
-import java.awt.Button;
+import java.awt.JButton;
 import java.awt.FlowLayout;
-import java.awt.Panel;
+import java.awt.JPanel;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -22,10 +22,19 @@ public class TossViewer
 		
 		frame.setLayout(new FlowLayout());
 		
-		Button pickle = new Button("Pickle Man");
-		Button turtle = new Button("Turtonne");
-		Button moon = new Button("C-Moon");
-		Button king = new Button("Waffle King");
+		JButton pickle = new JButton("Pickle Man");
+		JButton turtle = new JButton("Turtonne");
+		JButton moon = new JButton("C-Moon");
+		JButton king = new JButton("Waffle King");
+		
+		class ThrowListener implements ActionListener
+		{
+			public void actionPerformed(ActionEvent event)
+			{
+				Thrower throw = new Thrower(event.getActionCommand());
+			}	
+		}	
+		
 		
 		frame.setBounds(400, 400, 800, 600);
 		
