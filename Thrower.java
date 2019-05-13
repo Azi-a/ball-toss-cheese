@@ -6,6 +6,7 @@ public class Thrower
   public static final double MIN_GC = 0.01;
   public static final double MAX_GC = 29.41995;
   public static final int MOON_CHECK = 6;
+  public static final int KING_CHECK = 11;
   public static final double GRAV_PROB = 0.3;
   private static final double SQ_C = -0.0034576456;
   private static final double LIN_C = 0.1101559579;
@@ -16,6 +17,8 @@ public class Thrower
   private double maxVel;
   private double g;
   private double optTime;
+  private double userT;
+  private double deltaT;
   
   public Thrower(String throwName)
   {
@@ -38,11 +41,32 @@ public class Thrower
     }
     maxVel = IDEAL_V * coeff;
     optTime = Math.random() * (MAX_T - 0) + 0;
+    deltaT = Math.abs(userT - optTime);
   } 
  public double calcCoeff()
  {
    double coeff = SQ_C*Math.pow(let, 2) + LIN_C*let + N_C;
    return coeff;
  } 
-  
+ public double setT(double dt)
+ {
+   userT = dt;
+ } 
+ public static void main(String[] args)
+ {
+   Ball throwBall = new Ball(maxVel, deltaT, g);
+   Ball kickTwo = new Ball(maxVel, deltaT, g);
+   double dist = throwBall.determineDistanceBallThrown();
+   double inAir = throwBall.getTimeBallInAir();
+   if (let == KING_CHECK)
+   {
+     dist += kickTwo.determineDistanceBallThrown();
+     inAir += kickTwo.getTimeBallInAir();
+   } 
+   if (dist > throwBall.determineFinishLine())
+   {
+     System.out.println("You win, woo");
+   } 
+   
+ } 
 }
