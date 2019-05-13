@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
  */
 public class TossViewer 
 {
+	private static final double BASE_T = 0.15;
+	private static final int MS_S = 1000;
 
 	public static void main(String[] args)
 	{
@@ -27,14 +29,34 @@ public class TossViewer
 		JButton moon = new JButton("C-Moon");
 		JButton king = new JButton("Waffle King");
 		
+		Thrower throw;
 		class ThrowListener implements ActionListener
 		{
 			public void actionPerformed(ActionEvent event)
 			{
-				Thrower throw = new Thrower(event.getActionCommand());
+				throw = new Thrower(event.getActionCommand());
 			}	
 		}	
-		
+		JButton starter = new JButton("Start Throw");
+		JButton throw = new JButton("Throw Ball");
+		long startT = 0;
+		long endT = 0;
+		class StartListener implements ActionListener
+		{
+			public void actionPerformend(ActionEvent event)
+			{
+				if (event.getActionCommand().equals("Start Throw"))
+				{
+					startT = System.currentTimeMillis();
+				}
+				else
+				{
+					endT = System.currentTimeMillis();
+				}
+			}
+		}	
+		double changeT = (Math.abs(endT - startT)) / MS_S + BASE_T;
+		throw.setT(changeT);
 		
 		frame.setBounds(400, 400, 800, 600);
 		
@@ -46,6 +68,9 @@ public class TossViewer
 		frame.add(turtle,1);
 		frame.add(moon,2);
 		frame.add(king,3);
+		
+		frame.add(starter, 4);
+		frame.add(throw, 5);
 		
 		
 	
