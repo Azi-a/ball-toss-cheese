@@ -7,7 +7,9 @@ public class Thrower
   public static final double MAX_GC = 29.41995;
   public static final int MOON_CHECK = 6;
   public static final int KING_CHECK = 11;
+  public static final int TTN_CHECK = 8;
   public static final double GRAV_PROB = 0.3;
+  public static final double FAIL_PROB = 0.25;
   private static final double SQ_C = -0.0034576456;
   private static final double LIN_C = 0.1101559579;
   private static final double N_C = 0.2445641324;
@@ -54,7 +56,19 @@ public class Thrower
  } 
  public static void main(String[] args)
  {
-   Ball throwBall = new Ball(maxVel, deltaT, g);
+   double boostVel = maxVel;
+   if (let == TTN_CHECK)
+   {
+     if (Math.random() > FAIL_PROB)
+     {
+       boostVel = 2 * maxVel;
+     } 
+     else
+     {
+       boostVel = 0;
+     } 
+   } 
+   Ball throwBall = new Ball(boostVel, deltaT, g);
    Ball kickTwo = new Ball(maxVel, deltaT, g);
    double dist = throwBall.determineDistanceBallThrown();
    double inAir = throwBall.getTimeBallInAir();
