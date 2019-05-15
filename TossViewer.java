@@ -19,8 +19,9 @@ import javax.swing.ImageIcon;
 public class TossViewer 
 {
 	
-	private static final double BASE_T = 0.15;
-	private static final int MS_S = 1000;
+	public static final double BASE_T_MAX = 0.65;
+	public static final double BASE_T_MIN = 0.05;
+	public static final int MS_S = 1000;
 	private static final int NUM_THROW_SPRITES = 4;
 	
 	private Thrower tosser;
@@ -59,7 +60,8 @@ public class TossViewer
 					{
 						endT = System.currentTimeMillis();
 					}
-					double changeT = (Math.abs(endT - startT)) / MS_S + Math.random() * BASE_T;
+					double changeT = (Math.abs(endT - startT)) / MS_S + 
+						Math.random() * (BASE_T_MAX - BASE_T_MIN) + BASE_T_MIN;
 					tosser.setT(changeT);
 				}
 		}	
