@@ -20,6 +20,7 @@ public class TossViewer
 	
 	private static final double BASE_T = 0.15;
 	private static final int MS_S = 1000;
+	private static final int NUM_THROW_SPRITES = 4;
 
 	public static void main(String[] args)
 	{
@@ -144,8 +145,14 @@ public class TossViewer
 	
 	public void throwBall(Thrower player,Ball baseball)
 	{
-		
-		
+		Picture sprite0 = new Picture("throw0");
+		double airTime = baseball.getTimeBallInAir();
+		double displayTime = airTime / NUM_THROW_SPRITES;
+		Picture sprite1 = new Picture("throw1");
+		Picture sprite2 = new Picture("throw2");
+		Picture sprite3 = new Picture("throw3");
+		Picture sprite4 = new Picture("throw4");
+			
 	}
 	
 	
