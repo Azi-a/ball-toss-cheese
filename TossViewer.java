@@ -146,7 +146,7 @@ public class TossViewer
 	
 	
 	
-	public void makeThrow(String name)
+	public static void makeThrow(String name)
 	{
 		tosser = new Thrower(name);
 		
