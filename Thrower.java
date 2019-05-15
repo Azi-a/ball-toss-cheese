@@ -54,7 +54,7 @@ public class Thrower
  {
    userT = dt;
  } 
- public static void main(String[] args)
+ public double throw()
  {
    double boostVel = maxVel;
    if (let == TTN_CHECK)
@@ -81,6 +81,6 @@ public class Thrower
    {
      System.out.println("You win, woo");
    } 
-   
+  return inAir; 
  } 
 }
