@@ -84,7 +84,7 @@ public class TossViewer
 		
 		frame.setVisible(true);
 		
-		throwBall(throwr, frame);
+		throwBall(tosser, frame);
 		
 	}
 		
