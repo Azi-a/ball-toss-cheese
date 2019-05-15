@@ -54,7 +54,7 @@ public class Thrower
  {
    userT = dt;
  } 
- public double throw()
+ public double toss()
  {
    double boostVel = maxVel;
    if (let == TTN_CHECK)
