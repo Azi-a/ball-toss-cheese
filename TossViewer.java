@@ -61,7 +61,7 @@ public class TossViewer
 					}
 				}
 		}	
-		double changeT = (Math.abs(endT - startT)) / MS_S + BASE_T;
+		double changeT = (Math.abs(endT - startT)) / MS_S + Math.random() * BASE_T;
 		throwr.setT(changeT);
 		
 		frame.setBounds(400, 400, 800, 600);
