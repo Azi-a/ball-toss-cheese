@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 /**
  * 
@@ -82,6 +83,9 @@ public class TossViewer
 	
 		
 		frame.setVisible(true);
+		
+		throwBall(throwr, frame);
+		
 	}
 		
 		
@@ -143,16 +147,14 @@ public class TossViewer
 	
 	
 	
-	public void throwBall(Thrower player,Ball baseball)
+	public void throwBall(Thrower player, JFrame frame)
 	{
-		Picture sprite0 = new Picture("throw0");
-		double airTime = baseball.getTimeBallInAir();
-		double displayTime = airTime / NUM_THROW_SPRITES;
-		Picture sprite1 = new Picture("throw1");
-		Picture sprite2 = new Picture("throw2");
-		Picture sprite3 = new Picture("throw3");
-		Picture sprite4 = new Picture("throw4");
-			
+		ImageIcon start = new ImageIcon("cm.png");
+		JLabel label = new JLabel(start);
+  		frame.add(label);
+  		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  		frame.pack();
+  		frame.setVisible(true);
 	}
 	
 	
