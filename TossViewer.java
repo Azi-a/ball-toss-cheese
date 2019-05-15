@@ -22,7 +22,8 @@ public class TossViewer
 	private static final double BASE_T = 0.15;
 	private static final int MS_S = 1000;
 	private static final int NUM_THROW_SPRITES = 4;
-
+	
+	private Thrower tosser;
 	public static void main(String[] args)
 	{
 		
@@ -35,18 +36,16 @@ public class TossViewer
 		JButton moon = new JButton("C-Moon");
 		JButton king = new JButton("Waffle King");
 		
-		Thrower throwr;
-		class ThrowListener implements ActionListener
-		{
-			public void actionPerformed(ActionEvent event)
-			{
-				throwr = new Thrower(event.getActionCommand());
-			}	
-		}	
+		ActionListener listener = new ThrowListener();
+		pickle.addActionListener(listener);
+		turtle.addActionListener(listener);
+		moon.addActionListener(listener);
+		king.addActionListener(listener);
+			
 		JButton starter = new JButton("Start Throw");
 		JButton throwbutton = new JButton("Throw Ball");
-		long startT = 0;
-		long endT = 0;
+		long startT;
+		long endT;
 		class StartListener implements ActionListener
 		{
 			@Override
@@ -60,10 +59,11 @@ public class TossViewer
 					{
 						endT = System.currentTimeMillis();
 					}
+					double changeT = (Math.abs(endT - startT)) / MS_S + Math.random() * BASE_T;
+					tosser.setT(changeT);
 				}
 		}	
-		double changeT = (Math.abs(endT - startT)) / MS_S + Math.random() * BASE_T;
-		throwr.setT(changeT);
+		
 		
 		frame.setBounds(400, 400, 800, 600);
 		
@@ -146,7 +146,11 @@ public class TossViewer
 	
 	
 	
-	
+	public void makeThrow(String name)
+	{
+		tosser = new Thrower(name);
+		
+	}
 	public void throwBall(Thrower player, JFrame frame)
 	{
 		ImageIcon start = new ImageIcon("cm.png");
