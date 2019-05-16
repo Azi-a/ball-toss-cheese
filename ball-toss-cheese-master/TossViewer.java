@@ -16,9 +16,10 @@ import javax.swing.ImageIcon;
 import java.io.*;
 
 /**
- *
+ * GUI for the ball game, excecutes the game with the players inputs.
  * @author Zayd Moosajee, Jyotishka Sen, Ram Krishna
- *
+ * Due date- 5/16/19
+ * Teacher- Ishman
  */
 public class TossViewer
 {
@@ -167,7 +168,10 @@ public class TossViewer
 
 
 
-
+	/**
+	* Instantiates the thrower selected, making the throw.
+	* @param name the name of the thrower.
+	*/
 	public static void makeThrow(String name)
 	{
 		tosser = new Thrower(name);
