@@ -1,4 +1,11 @@
-
+/**
+ * Creates a thrower object and determines the maximum velocity and gravity of that character.
+ * Also determines if the player won based on if the goal was cleared after the maximum amount of kicks.
+ * @author Ram Krishna, Jyotishka Sen, Zayd Moosajee
+ * Teacher: Ishman
+ * Period: 2
+ * Due Date: 5-16-19
+ */
 public class Thrower
 {
   public static final double IDEAL_V = 46.9392;
