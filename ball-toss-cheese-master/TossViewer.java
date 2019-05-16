@@ -4,6 +4,7 @@ import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.*;
+import java.awt.Graphics;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -26,7 +27,7 @@ public class TossViewer
 	public static final double BASE_T_MIN = 0.05;
 	public static final int MS_S = 1000;
 	public static final int TIMEOUT = 5;
-	private static final int NUM_THROW_SPRITES = 4;
+	
 
 	private static Thrower tosser;
 	private static long startT;
@@ -89,22 +90,24 @@ public class TossViewer
 		frame.add(starter, 4);
 	//	frame.add(throwr, 5);
 
-		BufferedImage img = null;
-		try
-		{
-    		img = ImageIO.read(new File("throw0.png"));
-		}
-		catch (IOException notFound)
-		{
-		}
-		ImageIcon start = new ImageIcon(img);
-		JLabel begin45 = new JLabel();
-		begin45.setIcon(start);
-		frame.getContentPane().add(begin45);
+		ImageIcon start = new ImageIcon("throw0.png");
+		ImageIcon airUp = new ImageIcon("throw1.png");
+		ImageIcon air = new ImageIcon("throw2.png");
+		ImageIcon airDown = new ImageIcon("throw3.png");
+		ImageIcon land = new ImageIcon("throw4.png");
+		JLabel tossing = new JLabel();
+		tossing.setIcon(start);
+		frame.getContentPane().add(tossing);
 		frame.pack();
 		frame.setVisible(true);
-
-
+		tossing.setIcon(airUp);
+		frame.update(frame.getGraphics());
+		tossing.setIcon(air);
+		frame.update(frame.getGraphics());
+		tossing.setIcon(airDown);
+		frame.update(frame.getGraphics());
+		tossing.setIcon(land);
+		frame.update(frame.getGraphics());	
 	}
 
 
