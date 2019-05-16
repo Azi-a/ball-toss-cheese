@@ -79,8 +79,10 @@ public class Thrower
    }
    if (dist > throwBall.determineFinishLine())
    {
-     System.out.println("You win, woo");
+     System.out.println("You win, woo!");
    }
+   else
+     System.out.println("You lose...");
   return inAir;
  }
 }
